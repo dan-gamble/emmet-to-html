@@ -73,11 +73,11 @@
 
       if (trimmedText) str += `{${trimmedText}}`
 
-      str += '>'
       const els = _.filter(obj.content, (e) => typeof e === 'object')
 
       for (const el of els) {
-        if (els.indexOf(el) !== 0 && els.indexOf(el) > 0) str += '+'
+        isAdjacent(el, els) ? str += '+' : str += '>'
+
         str += parseObject(el)
       }
     }
