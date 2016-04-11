@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App'
 
-Vue.config.debue = true
+Vue.config.debug = true
 
 /* eslint-disable no-new */
 new Vue({
