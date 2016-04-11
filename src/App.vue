@@ -71,7 +71,7 @@
       const textContent = _.filter(obj.content, item => typeof item === 'string' && _.trim(item).length)
       const trimmedText = _.map(textContent, item => _.trim(item))[0]
 
-      str += `{${trimmedText}}`
+      if (trimmedText) str += `{${trimmedText}}`
 
       str += '>'
       const els = _.filter(obj.content, (e) => typeof e === 'object')
