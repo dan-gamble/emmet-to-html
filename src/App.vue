@@ -42,10 +42,16 @@
       emmetString += parseObject(el, emmetString)
     }
 
+    console.log(emmetString)
+
     return emmetString
   }
 
-  function parseObject(obj, str='') {
+  function parseObject(obj, str='', currentDepth=0) {
+    const newDepth = (currentDepth + 1)
+
+    obj['depth'] = currentDepth
+
     // Restart the string if it's a new object
     if (str) str = ''
     str += obj.tag
@@ -78,12 +84,13 @@
       for (const el of els) {
         isAdjacent(el, els) ? str += '+' : str += '>'
 
-        str += parseObject(el)
+        str += parseObject(el, '', newDepth)
       }
     }
 
     return str
   }
+
 
   function isAdjacent(item, arr) {
     return arr.indexOf(item) !== 0 && arr.indexOf(item) > 0
